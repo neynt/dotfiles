@@ -1,0 +1,58 @@
+alignment top_left
+background no
+border_width 0
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+double_buffer yes
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont cure:size=10
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_type override
+own_window_class Conky
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+stippled_borders 0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+update_interval 3.0
+
+minimum_size 150 5
+
+gap_x 50
+gap_y 368
+
+color1 696969
+
+TEXT
+${color1}System $hr
+${color1}Battery $alignr $color$battery
+${color1}Uptime $alignr $color$uptime_short
+
+${color1}Memory $hr
+${color1}Available $alignr $color$memeasyfree
+${color1}Swap used $alignr $color$swap
+
+${color1}Free disk $hr
+${color1}/     $alignr$color ${fs_free /}
+${color1}/tome $alignr$color ${fs_free /tome}
+${color1}/stash$alignr$color ${fs_free /stash}
+${color1}/media/windows$alignr$color ${fs_free /media/windows}
+
+${color1}wlan0 $hr
+${color1}IP ${alignr} $color${addrs wlan0}
+${color1}Down ${alignr} $color${totaldown wlan0}
+${color1}Up ${alignr} $color$color${totalup wlan0}

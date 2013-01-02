@@ -1,0 +1,35 @@
+own_window yes
+own_window_type desktop
+own_window_class Conky
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+use_xft yes
+xftfont cure:size=10
+
+alignment top_left
+no_buffers yes
+uppercase no
+
+background no
+double_buffer yes
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+minimum_size 100 5
+
+gap_x 50
+gap_y 676
+
+update_interval 2.0
+
+color1 696969
+
+TEXT
+${if_mpd_playing}${color1}${font}Now $mpd_status: $alignr$color${mpd_artist}
+${font IPAMincho:size=24}${mpd_title}${endif}
