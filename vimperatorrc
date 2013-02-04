@@ -1,1 +1,14 @@
-/home/jim/.vimperatorrc
+noremap h 8h
+noremap j 8j
+noremap k 8k
+noremap l 8l
+
+highlight Normal color: black; background: #d2d2d2; font: 7pt cure;
+highlight StatusLine color: black; background: transparent; font-weight: normal; font: 7pt cure;
+highlight CompItem color: black; background: white;
+highlight CompGroup:not(:first-of-type) margin-top: 0ex;
+highlight CmdLine background: black; color: white;
+highlight CmdLine>* font: 7pt cure;
+highlight ContentSeparator border-top: 1px solid #9c9c9c; display: -moz-box;
+
+set noautocomplete
