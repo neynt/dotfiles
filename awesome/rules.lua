@@ -4,12 +4,13 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
-                     focus = true,
+                     focus = awful.client.focus.filter,
+                     size_hints_honor = false,
+                     --ontop = false,
+                     --fullscreen = false,
+
                      keys = clientkeys,
                      buttons = clientbuttons,
-                     size_hints_honor = false,
-                     ontop = false,
-                     fullscreen = false,
                      
                      --maximized_vertical = false,
                      --maximized_horizontal = false
@@ -39,7 +40,27 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-    --[[
+    -- Enable sloppy focus
+    c:connect_signal("mouse::enter", function(c)
+        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+            and awful.client.focus.filter(c) then
+            client.focus = c
+        end
+    end)
+
+    if not startup then
+        -- Set the windows at the slave,
+        -- i.e. put it at the end of others instead of setting it master.
+        awful.client.setslave(c)
+
+        -- Put windows in a smart way, only if they does not set an initial position.
+        if not c.size_hints.user_position and not c.size_hints.program_position then
+            --awful.placement.under_mouse(c)
+            awful.placement.no_overlap(c)
+            awful.placement.no_offscreen(c)
+        end
+    end
+
     local titlebars_enabled = false
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
         local left_layout = wibox.layout.fixed.horizontal()
@@ -75,32 +96,11 @@ client.connect_signal("manage", function (c, startup)
         layout:set_middle(title)
 
         awful.titlebar(c):set_widget(layout)
-    -- ... but keep it hidden ]]
-    if c.titlebar --[[and awful.layout.get(c.screen) ~= awful.layout.suit.floating]] then
-        c.titlebar.visible = false
     end
-    --]]
 
-    -- Enable sloppy focus
-    c:connect_signal("mouse::enter", function(c)
-        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c) then
-            client.focus = c
-        end
-    end)
-
-    if not startup then
-        -- Set the windows at the slave,
-        -- i.e. put it at the end of others instead of setting it master.
-        -- awful.client.setslave(c)
-
-        -- Put windows in a smart way, only if they does not set an initial position.
-        if not c.size_hints.user_position and not c.size_hints.program_position then
-            awful.placement.under_mouse(c)
-            awful.placement.no_overlap(c)
-            --awful.placement.no_offscreen(c)
-        end
-    end
+    --if awful.titlebar(c) --[[and awful.layout.get(c.screen) ~= awful.layout.suit.floating]] then
+    --    awful.titlebar(c).visible = true
+    --end
 
     -- Arrange everything
     awful.layout.arrange(mouse.screen)

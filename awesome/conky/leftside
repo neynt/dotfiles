@@ -2,8 +2,7 @@ alignment top_left
 background no
 border_width 0
 cpu_avg_samples 2
-default_color white
-default_outline_color white
+default_outline_color red
 default_shade_color white
 double_buffer yes
 draw_borders no
@@ -20,39 +19,46 @@ extra_newline no
 own_window yes
 own_window_type override
 own_window_class Conky
-own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent no
 stippled_borders 0
 uppercase no
 use_spacer none
-show_graph_scale no
+show_graph_scale yes
 show_graph_range no
 
 update_interval 3.0
 
-minimum_size 150 5
+minimum_size 100 5
 
-gap_x 50
-gap_y 368
+gap_x 24
+gap_y 486
 
-color1 696969
+own_window_colour 343434
+default_color ff0000
+color1 ffffff
+color2 fda8dd
+color3 7fbaf8
+color4 f1e878
+color5 c94053
+
+color9 696969
 
 TEXT
-${color1}System $hr
-${color1}Battery $alignr $color$battery
-${color1}Uptime $alignr $color$uptime_short
+${color9}uptime $color1$uptime_short
 
-${color1}Memory $hr
-${color1}Available $alignr $color$memeasyfree
-${color1}Swap used $alignr $color$swap
+${color9}cpu ${color2}${freq_g}GHz
+${color9}${cpugraph 22,120 999999 ff9a2f -t}
+${color9}ram ${color3}${memeasyfree} free
+${color9}${memgraph 22,120 999999 359ace -t}
 
-${color1}Free disk $hr
-${color1}/     $alignr$color ${fs_free /}
-${color1}/tome $alignr$color ${fs_free /tome}
-${color1}/stash$alignr$color ${fs_free /stash}
-${color1}/media/windows$alignr$color ${fs_free /media/windows}
+${color9}up ${color4}${totalup wlan0} $alignr${color1}${addrs wlan0}
+${color9}${upspeedgraph wlan0 22,120 999999 f1e878 300KiB -t}
+${color9}down ${color5}${totaldown wlan0}
+${color9}${downspeedgraph wlan0 22,120 999999 c94053 3000KiB -t}
 
-${color1}wlan0 $hr
-${color1}IP ${alignr} $color${addrs wlan0}
-${color1}Down ${alignr} $color${totaldown wlan0}
-${color1}Up ${alignr} $color$color${totalup wlan0}
+${color9}${alignr}free
+${color9}/ $alignr$color1 ${fs_free /}
+${color9}/tome $alignr$color1 ${fs_free /tome}
+${color9}/stash$alignr$color1 ${fs_free /stash}
+${color9}/windows$alignr$color1 ${fs_free /windows}

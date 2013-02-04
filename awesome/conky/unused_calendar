@@ -1,8 +1,8 @@
-alignment bottom_right
-background no
+alignment top_left
+background yes
 border_width 0
 cpu_avg_samples 2
-default_color white
+default_color 3e54c4
 default_outline_color white
 default_shade_color white
 double_buffer yes
@@ -11,14 +11,14 @@ draw_graph_borders yes
 draw_outline no
 draw_shades no
 use_xft yes
-xftfont Termsynu:size=10
+xftfont Lime:size=8
 net_avg_samples 2
 no_buffers yes
 out_to_console no
 out_to_stderr no
 extra_newline no
 own_window yes
-own_window_type desktop
+own_window_type override
 own_window_class Conky
 own_window_transparent yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
@@ -28,14 +28,14 @@ use_spacer none
 show_graph_scale no
 show_graph_range no
 
-update_interval 60.0
+update_interval 1.0
 
-minimum_size 100 5
+minimum_size 121 5
 
-gap_x 100
-gap_y 100
+gap_x 1196
+gap_y 250
 
-color1 989898
+color1 ffffff
 
 TEXT
-${color1}${execpi 60 DJS=`date +%_d`; cal | sed s/"\(^\|[^0-9]\)$DJS"'\b'/'\1${color}'"$DJS"'${color1}'/ | sed s/^/'  '/}
+${color}${execpi 60 DJS=`date +%_d`; cal | sed s/"\(^\|[^0-9]\)$DJS"'\b'/'\1${color1}'"$DJS"'${color}'/ | sed 's/^//g' }

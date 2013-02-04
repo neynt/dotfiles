@@ -1,15 +1,10 @@
----------------------------
--- Default awesome theme --
----------------------------
-
-prefix = config_dir .. "/theme"
+local prefix = config_dir .. "/theme"
 
 theme = {}
 
-theme.font          = "lime 10"
+theme.font          = "cure 8"
 theme.taglist_font  = theme.font
 
---theme.bg_normal     = "#25221d"
 theme.bg_normal     = "#000000"
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = "#ff3300"
@@ -20,7 +15,7 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffff00"
 theme.fg_minimize   = "#000000"
 
-theme.border_width  = "0"
+theme.border_width  = 0
 theme.border_normal = "#25221d"
 theme.border_focus  = "#000000"
 theme.border_marked = "#91231c"
@@ -37,19 +32,19 @@ theme.gap_width     = theme.orig_gap
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
+theme.bg_systray = "#000000"
+
 -- Display the taglist bars
 theme.taglist_squares_sel   = prefix .. "/taglist/squarefw.png"
 theme.taglist_squares_unsel = prefix .. "/taglist/squarew.png"
-
-theme.tasklist_floating_icon = prefix .. "/tasklist/floatingw.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_border_width = "0"
 theme.menu_submenu_icon = prefix .. "/submenu.png"
-theme.menu_height = "13"
-theme.menu_width  = "100"
+theme.menu_height = 13
+theme.menu_width  = 100
 
 -- Define the image to load
 theme.titlebar_close_button_normal = prefix .. "/titlebar/close_normal.png"
@@ -75,8 +70,8 @@ theme.titlebar_maximized_button_focus_inactive  = prefix .. "/titlebar/maximized
 theme.titlebar_maximized_button_normal_active = prefix .. "/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = prefix .. "/titlebar/maximized_focus_active.png"
 
--- Wallpaper is set at the bottom of rc.lua
---theme.wallpaper_cmd = { "xsetroot -solid '#ffffff'" }
+-- Wallpaper is set in rc.lua
+--theme.wallpaper = "whatever man"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = prefix .. "/layouts/fairhw.png"
@@ -93,6 +88,7 @@ theme.layout_spiral  = prefix .. "/layouts/spiralw.png"
 theme.layout_dwindle = prefix .. "/layouts/dwindlew.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
+theme.icon_theme = nil
 
 return theme
 
