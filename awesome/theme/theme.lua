@@ -1,25 +1,26 @@
-local prefix = config_dir .. "/theme"
+local prefix = "/home/neynt/.config/awesome/theme"
 
 theme = {}
 
-theme.font          = "cure 8"
-theme.taglist_font  = theme.font
+theme.font          = "cure 6"
 
 theme.bg_normal     = "#000000"
 theme.bg_focus      = theme.bg_normal
 theme.bg_urgent     = "#ff3300"
 theme.bg_minimize   = "#888888"
+theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#999999"
-theme.fg_focus      = "#ffffff"
+theme.fg_focus      = "#999999"
 theme.fg_urgent     = "#ffff00"
 theme.fg_minimize   = "#000000"
 
 theme.border_width  = 0
-theme.border_normal = "#25221d"
-theme.border_focus  = "#000000"
+theme.border_normal = "#000000"
+theme.border_focus  = "#c94053"
 theme.border_marked = "#91231c"
 
+-- window margins require a patch to /usr/share/awesome/lib/awful/layout/suit/tile.lua
 theme.orig_gap      = 0
 theme.small_gap     = 0
 theme.gap_width     = theme.orig_gap
@@ -32,15 +33,24 @@ theme.gap_width     = theme.orig_gap
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
+theme.taglist_fg_focus = "#ffffff"
 theme.bg_systray = "#000000"
+
+-- dmenu theme
+theme.dmenu_bg_normal = "#000000"
+theme.dmenu_fg_normal = "#999999"
+theme.dmenu_bg_focus = "#ffffff"
+theme.dmenu_fg_focus = "#000000"
 
 -- Display the taglist bars
 theme.taglist_squares_sel   = prefix .. "/taglist/squarefw.png"
 theme.taglist_squares_unsel = prefix .. "/taglist/squarew.png"
 
 -- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
+theme.menu_bg_normal = theme.bg_normal
+theme.menu_bg_focus  = theme.bg_normal
+theme.menu_fg_normal = theme.fg_normal
+theme.menu_fg_focus  = theme.taglist_fg_focus
 theme.menu_border_width = "0"
 theme.menu_submenu_icon = prefix .. "/submenu.png"
 theme.menu_height = 13
@@ -71,7 +81,7 @@ theme.titlebar_maximized_button_normal_active = prefix .. "/titlebar/maximized_n
 theme.titlebar_maximized_button_focus_active  = prefix .. "/titlebar/maximized_focus_active.png"
 
 -- Wallpaper is set in rc.lua
---theme.wallpaper = "whatever man"
+theme.wallpaper = "/stash/jim/wallpapers/active/flowers.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = prefix .. "/layouts/fairhw.png"
@@ -91,20 +101,3 @@ theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 theme.icon_theme = nil
 
 return theme
-
---[[ random mood
-local m_r = math.random(0, 255)
-local m_g = math.random(0, 255)
-local m_b = math.random(0, 255)
-local mood = string.format("#%02x%02x%02x", m_r, m_g, m_b)
---]]
-
---[[ the mood experiment did not work out.
-local mood = "#ffffff"
-
-local r = tonumber(string.sub(mood, 2, 3), 16)
-local g = tonumber(string.sub(mood, 4, 5), 16)
-local b = tonumber(string.sub(mood, 6, 7), 16)
-
-local mood_dark = string.format("#%02x%02x%02x", math.floor(r/2), math.floor(g/2), math.floor(b/2))
---]]

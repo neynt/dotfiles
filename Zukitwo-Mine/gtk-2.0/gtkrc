@@ -8,8 +8,8 @@
 # See the file COPYING for the full license text.
 
 # These are the defined colors for the theme, you can change them in GNOME's appearance preferences.
-gtk_color_scheme = "bg_color:#d2d2d2\nselected_bg_color:#4f4363\nbase_color:#F7F7F7" # Background, base.
-gtk_color_scheme = "fg_color:#2c2c2c\nselected_fg_color:#f5f5f5\ntext_color:#2c2c2c" # Foreground, text.
+gtk_color_scheme = "bg_color:#d2d2d2\nselected_bg_color:#7fbaf8\nbase_color:#F7F7F7" # Background, base.
+gtk_color_scheme = "fg_color:#2c2c2c\nselected_fg_color:#ffffff\ntext_color:#2c2c2c" # Foreground, text.
 gtk_color_scheme = "tooltip_bg_color:#F5F5B5\ntooltip_fg_color:#000000" # Tooltips.
 gtk_color_scheme = "link_color:#08c" # Hyperlinks
 gtk_color_scheme = "bg_color_dark:#383838\ntext_color_dark:#FFF" # Dark colors

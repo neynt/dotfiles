@@ -12,6 +12,7 @@ mytaglist.buttons = awful.util.table.join(
     awful.button({ }, 4, function () awful.util.spawn(config_dir .. "/vol.sh up") end),
     awful.button({ }, 5, function () awful.util.spawn(config_dir .. "/vol.sh down") end)
 )
+mytasklist = {}
 
 -- Create for each screen
 for s = 1, screen.count() do
@@ -29,6 +30,8 @@ for s = 1, screen.count() do
         left_layout:add(separator)
 
         local center_layout = wibox.layout.fixed.horizontal()
+        mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, mytasklist.buttons)
+        center_layout:add(mytasklist[s])
 
         local right_layout = wibox.layout.fixed.horizontal()
         right_layout:add(mpdwidget)

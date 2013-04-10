@@ -5,7 +5,9 @@ cd ${HOME}
 export EDITOR="vim"
 export BROWSER="firefox"
 #export DE="gnome"
-export GTK_IM_MODULE="ibus"
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
 xset m 8 3 &
 xset r rate 180 58 &
@@ -14,11 +16,14 @@ xmodmap "${HOME}/.Xmodmap"
 wmname LG3D & # Fool Java apps
 setxkbmap -option compose:ralt # compose key!
 
-# Remove any leftover PULSE_SERVER from previous logins
+# Remove any leftover PULSE variables from previous logins
 # -- otherwise, it refuses to start at all
 # (seriously who thought it was a good idea to leave
 # crap in the root window)
 xprop -root -remove PULSE_SERVER
+xprop -root -remove PULSE_ID
+xprop -root -remove PULSE_COOKIE
+xprop -root -remove PULSE_SESSION_ID
 
 # Systemd for user (just mpd now)
 systemd --user &
@@ -33,7 +38,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Background applications
-unclutter -idle 1 -jitter 2 -root &
+unclutter -idle 8 -jitter 2 -root &
 #mpd &
 #urxvtd -q -o -f &
 compton &
@@ -42,11 +47,17 @@ thunar --daemon &
 # Trayed applications
 pnmixer &
 dropboxd &
-gmail-notify &
-ibus-daemon --xim &
+# sleep 60 && gmail-notify &
+${HOME}/bin/gmail-icon &
+ibus-daemon --xim --replace --daemonize &
+batterymon &
 
-# Sublime text on startup, just because.
+# Literal startup apps
+#pidgin &
 subl &
+#xfce4-terminal -e weechat-curses &
+#xfce4-terminal -e ncmpcpp &
 
 # The window manager itself.
 exec awesome
+#exec awesome -c /etc/xdg/awesome/rc.lua

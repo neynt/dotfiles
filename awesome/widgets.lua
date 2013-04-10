@@ -41,6 +41,7 @@ timewidget:buttons(awful.util.table.join(
 mpdwidget = wibox.widget.textbox()
 mpdwidget:buttons(awful.util.table.join(
     awful.button({ }, 1, function () awful.util.spawn("mpc next") end),
+    awful.button({ }, 2, function () awful.util.spawn("mpc del 0") end),
     awful.button({ }, 3, function () awful.util.spawn("mpc stop") end)
 ))
 

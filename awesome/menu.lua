@@ -10,6 +10,10 @@ local myutilsmenu = {
     { "invert", "xcalib -invert -alter" },
     { "darken", "xcalib -contrast 50 -alter" },
     { "brighten", "xcalib -brightness 15 -alter" },
+    { "ashen", function ()
+        awful.util.spawn("xcalib -contrast 50 -alter")
+        awful.util.spawn("xcalib -brightness 15 -alter")
+    end },
     { "1 red", "xcalib -red 1.0 99.0 1.0 -alter" },
     { "1 green", "xcalib -green 1.0 99.0 1.0 -alter" },
     { "1 blue", "xcalib -blue 1.0 99.0 1.0 -alter" },
@@ -29,10 +33,15 @@ local myutilsmenu = {
         awful.util.spawn("xcalib -green 1.0 0.0 1.0 -alter")
     end },
     { "don't hack me", function ()
-        awful.util.spawn(  "xcalib -red 1 0 30 -alter")
-        awful.util.spawn( "xcalib -blue 1 0 30 -alter")
+        awful.util.spawn("xcalib -red 1 0 30 -alter")
+        awful.util.spawn("xcalib -blue 1 0 30 -alter")
     end },
-    { "whiten", "xcalib -brightness 99 -alter" },
+    { "whiten", function()
+        awful.util.spawn("xcalib -red 1.0 99.0 1.0 -alter")
+        awful.util.spawn("xcalib -green 1.0 99.0 1.0 -alter")
+        awful.util.spawn("xcalib -blue 1.0 99.0 1.0 -alter")
+    end }
+
 }
 
 local dangermenu = {

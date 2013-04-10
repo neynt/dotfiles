@@ -17,6 +17,8 @@ awful.rules.rules = {
                      } },
     { rule = { name="recordMyDesktop" },
       properties = { floating = true } },
+    { rule = { name="Gvim" },
+      properties = { size_hints_honor = true } },
     { rule = { name="Exe"}, -- Flash full screen
       properties = { floating = true } },
     { rule = { class="DeepinScrot.py" },
@@ -121,7 +123,7 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
         end
         
         -- Floaters obey size hints
-        if awful.layout.get(c.screen) == awful.layout.suit.floating then
+        if awful.layout.get(c.screen) == awful.layout.suit.floating or c.class == 'Gvim' then
             c.size_hints_honor = true
         else
             c.size_hints_honor = false

@@ -1,0 +1,12 @@
+Config {
+    font = "xft:Cure:size=9:antialias=false",
+    bgColor = "#000000",
+    fgColor = "#515246",
+    commands = [
+        Run Date "%Y-%b-%d (%a) %l:%M" "date" 10,
+        Run StdinReader
+    ],
+    sepChar = "%",
+    alignSep = "}{",
+    template = "%StdinReader% }{ <fc=#A2A754>%date%</fc>"
+}

@@ -6,7 +6,7 @@ default_outline_color red
 default_shade_color white
 double_buffer yes
 draw_borders no
-draw_graph_borders yes
+draw_graph_borders no
 draw_outline no
 draw_shades no
 use_xft yes
@@ -19,8 +19,7 @@ extra_newline no
 own_window yes
 own_window_type override
 own_window_class Conky
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_transparent no
+own_window_hints undecorated
 stippled_borders 0
 uppercase no
 use_spacer none
@@ -35,6 +34,7 @@ gap_x 24
 gap_y 486
 
 own_window_colour 343434
+own_window_transparent yes
 default_color ff0000
 color1 ffffff
 color2 fda8dd
@@ -46,16 +46,14 @@ color9 696969
 
 TEXT
 ${color9}uptime $color1$uptime_short
-
+${color9}${cpugraph 24,120 fda8dd fda8dd -t}
 ${color9}cpu ${color2}${freq_g}GHz
-${color9}${cpugraph 22,120 999999 ff9a2f -t}
+${color9}${memgraph 24,120 7fbaf8 7fbaf8 -t}
 ${color9}ram ${color3}${memeasyfree} free
-${color9}${memgraph 22,120 999999 359ace -t}
-
+${color9}${upspeedgraph wlan0 24,120 f1e878 f1e878 300KiB -t}
 ${color9}up ${color4}${totalup wlan0} $alignr${color1}${addrs wlan0}
-${color9}${upspeedgraph wlan0 22,120 999999 f1e878 300KiB -t}
+${color9}${downspeedgraph wlan0 24,120 c94053 c94053 3000KiB -t}
 ${color9}down ${color5}${totaldown wlan0}
-${color9}${downspeedgraph wlan0 22,120 999999 c94053 3000KiB -t}
 
 ${color9}${alignr}free
 ${color9}/ $alignr$color1 ${fs_free /}
