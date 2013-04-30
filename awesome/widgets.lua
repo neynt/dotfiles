@@ -6,9 +6,9 @@ separator:set_image(config_dir .. "/theme/separator.png")
 left_separator = wibox.widget.imagebox()
 left_separator:set_image(config_dir .. "/theme/separator.png")
 left_separator:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () awful.util.spawn(config_dir .. "/vol.sh mute") end),
-    awful.button({ }, 4, function () awful.util.spawn(config_dir .. "/vol.sh up") end),
-    awful.button({ }, 5, function () awful.util.spawn(config_dir .. "/vol.sh down") end)
+    awful.button({ }, 1, function () awful.util.spawn("vol.sh mute") end),
+    awful.button({ }, 4, function () awful.util.spawn("vol.sh up") end),
+    awful.button({ }, 5, function () awful.util.spawn("vol.sh down") end)
 ))
 
 -- Right separator adjusts brightness when scrolled over
@@ -16,8 +16,8 @@ right_separator = wibox.widget.imagebox()
 right_separator:set_image(config_dir .. "/theme/separator.png")
 right_separator:buttons(awful.util.table.join(
     awful.button({ }, 1, function () awful.tag.viewnone() end),
-    awful.button({ }, 4, function () awful.util.spawn(config_dir .. "/brig.sh +") end),
-    awful.button({ }, 5, function () awful.util.spawn(config_dir .. "/brig.sh -") end)
+    awful.button({ }, 4, function () awful.util.spawn("xbacklight -time 0 + 13") end),
+    awful.button({ }, 5, function () awful.util.spawn("xbacklight -time 0 - 1") end)
 ))
 
 -- Spacer: for fake centering

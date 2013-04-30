@@ -54,8 +54,19 @@ for s = 1, screen.count() do
         left_layout:add(mytaglist[s])
         left_layout:add(separator)
 
+        local center_layout = wibox.layout.fixed.horizontal()
+        mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, mytasklist.buttons)
+        center_layout:add(mytasklist[s])
+
+        local right_layout = wibox.layout.fixed.horizontal()
+        right_layout:add(timewidget)
+        right_layout:add(separator)
+
         local layout = wibox.layout.align.horizontal()
         layout:set_left(left_layout)
+        layout:set_second(center_layout)
+        layout:set_right(right_layout)
+
         mywibox[s]:set_widget(layout)
     end
 end

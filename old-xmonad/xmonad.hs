@@ -9,8 +9,8 @@ import XMonad.Util.EZConfig(additionalKeys)
 main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
 myBar = "xmobar"
 myPP = xmobarPP {
-    ppCurrent = xmobarColor "#A2A754" "" . wrap "" "",
-    ppTitle   = xmobarColor "#A2A754" "" . (' ':)
+    ppCurrent = xmobarColor "#C94053" "" . wrap "" "",
+    ppTitle   = xmobarColor "#C94053" "" . (' ':)
 }
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
@@ -22,8 +22,8 @@ myConfig = defaultConfig {
     terminal           = "xfce4-terminal",
     modMask            = mod4Mask,
     borderWidth        = 2,
-    normalBorderColor  = "#515246",
-    focusedBorderColor = "#A2A754",
+    normalBorderColor  = "#937277",
+    focusedBorderColor = "#C94053",
     manageHook         = manageDocks <+> myManageHook <+> manageHook defaultConfig,
     layoutHook         = smartBorders $ avoidStruts $ layoutHook defaultConfig
 }

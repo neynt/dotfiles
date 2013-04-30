@@ -33,10 +33,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "h", function () awful.tag.incmwfact(-0.1234)       end),
+    awful.key({ modkey,           }, "h", function () awful.tag.incmwfact(-0.05)       end),
     awful.key({ modkey, "Shift"   }, "h", function () awful.tag.incnmaster( 1)        end),
     awful.key({ modkey, "Control" }, "h", function () awful.tag.incncol( 1)           end),
-    awful.key({ modkey,           }, "l", function () awful.tag.incmwfact(0.1234)        end),
+    awful.key({ modkey,           }, "l", function () awful.tag.incmwfact(0.05)        end),
     awful.key({ modkey, "Shift"   }, "l", function () awful.tag.incnmaster(-1)        end),
     awful.key({ modkey, "Control" }, "l", function () awful.tag.incncol(-1)           end),
     awful.key({ modkey,           }, "m", function () awful.tag.setmwfact(0.5)        end),
@@ -73,7 +73,6 @@ globalkeys = awful.util.table.join(
     --awful.key({ modkey, "Control"          }, "n", awful.client.restore),
     awful.key({ modkey }, "b", function ()
         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
-        beautiful.gap_width = beautiful.orig_gap - beautiful.gap_width
 		awful.layout.arrange(mouse.screen)
     end),
 
@@ -85,7 +84,7 @@ globalkeys = awful.util.table.join(
     end),
 
     -- dmenu prompt
-    awful.key({ modkey,           }, "r",
+    awful.key({ modkey,           }, "p",
         function () awful.util.spawn("dmenu_run -fn 'smoothansi-7' " ..
                                       --"-b " ..
                                       --"-l 9 " ..
@@ -106,11 +105,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"            }, "f",      function () awful.util.spawn("thunar") end),
     awful.key({ modkey, "Shift"            }, "a",      function () awful.util.spawn("arandr") end),
     awful.key({ modkey, "Shift"            }, "x",      function () awful.util.spawn("xkill") end),
-    awful.key({ modkey, "Shift"            }, "v",      function () awful.util.spawn("vlc") end),
-    awful.key({ modkey, "Shift"            }, "s",      function () awful.util.spawn("deepin-scrot") end),
-    awful.key({ modkey,                    }, "x",      function () awful.util.spawn(config_dir .. "/notify-title.sh") end),
-    awful.key({ modkey,                    }, "s",      function () awful.util.spawn(config_dir .. "/scrotshot.sh ") end),
-    awful.key({ modkey,                    }, "a",      function () awful.util.spawn(config_dir .. "/scrotshot.sh area") end),
+    awful.key({ modkey,                    }, "s",      function () awful.util.spawn("scrotshot.sh") end),
     awful.key({ modkey, "Shift"            }, "i",      function () awful.util.spawn(terminal .. " -e wicd-curses") end),
     awful.key({ modkey, "Shift"            }, "p",      function () awful.util.spawn(terminal .. " -e python") end),
     awful.key({ modkey, "Shift"            }, "n",      function () awful.util.spawn(terminal .. " -e ncmpcpp") end),
@@ -119,7 +114,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift", "Control" }, "e",      function () awful.util.spawn("subl -n") end),
     
     -- Utils
-    awful.key({ }, "XF86PowerOff",          function () awful.util.spawn_with_shell("xset dpms force off && systemctl suspend -i") end),
+    awful.key({ }, "XF86PowerOff",          function () awful.util.spawn_with_shell("xset dpms force off") end),
     awful.key({ }, "XF86Suspend",           function () awful.util.spawn("systemctl hibernate") end),
     awful.key({ }, "XF86MonBrightnessUp",   function () awful.util.spawn(config_dir .. "/brig.sh +") end),
     awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn(config_dir .. "/brig.sh -") end),
@@ -127,7 +122,6 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume",  function () awful.util.spawn(config_dir .. "/vol.sh up") end),
     awful.key({ }, "XF86AudioLowerVolume",  function () awful.util.spawn(config_dir .. "/vol.sh down") end),
     awful.key({ }, "Help",                  function () awful.util.spawn(config_dir .. "/lock.sh") end),
-    awful.key({ }, "Print",                 function () awful.util.spawn(config_dir .. "/scrotshot.sh") end),
     awful.key({ }, "XF86HomePage",          function () awful.util.spawn("xcalib -clear") end),
 
     -- ibus
@@ -139,11 +133,11 @@ globalkeys = awful.util.table.join(
 
 local fm = 48
 clientkeys = awful.util.table.join(
-    awful.key({ modkey }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey }, "c",      function (c) c:kill()                         end),
-    awful.key({ modkey }, "space",  awful.client.floating.toggle                     ),
-    awful.key({ modkey }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey }, "o",      awful.client.movetoscreen                        ),
+    awful.key({ modkey },          "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey, "Shift" }, "c",      function (c) c:kill()                         end),
+    awful.key({ modkey },          "space",  awful.client.floating.toggle                     ),
+    awful.key({ modkey },          "Return", function (c) c:swap(awful.client.getmaster()) end),
+    awful.key({ modkey },          "o",      awful.client.movetoscreen                        ),
     --awful.key({ modkey }, "n",
     --    function (c)
     --        c.border_width = beautiful.border_width - c.border_width

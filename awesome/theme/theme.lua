@@ -2,28 +2,27 @@ local prefix = "/home/neynt/.config/awesome/theme"
 
 theme = {}
 
-theme.font          = "cure 6"
+theme.font          = "Sazanami Gothic 8"
 
-theme.bg_normal     = "#000000"
-theme.bg_focus      = theme.bg_normal
+theme.bg_normal     = "#252426"
+theme.bg_focus      = "#00000000"
 theme.bg_urgent     = "#ff3300"
 theme.bg_minimize   = "#888888"
-theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#999999"
-theme.fg_focus      = "#999999"
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = theme.fg_normal
 theme.fg_urgent     = "#ffff00"
 theme.fg_minimize   = "#000000"
 
-theme.border_width  = 0
-theme.border_normal = "#000000"
-theme.border_focus  = "#c94053"
+theme.border_width  = 2
+theme.border_normal = "#4a4a4a"
+theme.border_focus  = "#9258B0"
 theme.border_marked = "#91231c"
 
 -- window margins require a patch to /usr/share/awesome/lib/awful/layout/suit/tile.lua
-theme.orig_gap      = 0
+theme.orig_gap      = 4
 theme.small_gap     = 0
-theme.gap_width     = theme.orig_gap
+theme.cur_gap       = theme.orig_gap
 
 -- Others available:
 -- [taglist|tasklist]_[bg|fg]_[focus|urgent]
@@ -34,13 +33,14 @@ theme.gap_width     = theme.orig_gap
 --theme.taglist_bg_focus = "#ff0000"
 
 theme.taglist_fg_focus = "#ffffff"
-theme.bg_systray = "#000000"
+theme.tasklist_disable_icon = true
+theme.bg_systray = theme.bg_normal
 
 -- dmenu theme
 theme.dmenu_bg_normal = "#000000"
-theme.dmenu_fg_normal = "#999999"
-theme.dmenu_bg_focus = "#ffffff"
-theme.dmenu_fg_focus = "#000000"
+theme.dmenu_fg_normal = theme.fg_normal
+theme.dmenu_bg_focus = "#7E678A"
+theme.dmenu_fg_focus = theme.taglist_fg_focus
 
 -- Display the taglist bars
 theme.taglist_squares_sel   = prefix .. "/taglist/squarefw.png"
@@ -53,7 +53,7 @@ theme.menu_fg_normal = theme.fg_normal
 theme.menu_fg_focus  = theme.taglist_fg_focus
 theme.menu_border_width = "0"
 theme.menu_submenu_icon = prefix .. "/submenu.png"
-theme.menu_height = 13
+theme.menu_height = 16
 theme.menu_width  = 100
 
 -- Define the image to load

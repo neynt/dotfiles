@@ -108,28 +108,41 @@ client.connect_signal("manage", function (c, startup)
     awful.layout.arrange(mouse.screen)
 end)
 
+-- Arrange signal handler
 for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
     local clients = awful.client.visible(s)
     local layout = awful.layout.getname(awful.layout.get(s))
 
+    local num_tiled = 0
     for _, c in pairs(clients) do
-        -- Floaters are always on top
+        if not awful.client.floating.get(c) then
+            num_tiled = num_tiled + 1
+        end
+    end
+
+    for _, c in pairs(clients) do
+        if num_tiled == 1 or layout == "max" then
+            c.border_width = 0
+            beautiful.cur_gap = beautiful.small_gap
+        else
+            c.border_width = beautiful.border_width
+            beautiful.cur_gap = beautiful.orig_gap
+        end
         if awful.client.floating.get(c) or layout == "floating" then
-            if not c.fullscreen and c.class ~= "Conky" then
+            -- Floaters are always on top
+            c.size_hints_honor = true
+            -- and bordered
+            c.border_width = beautiful.border_width
+            if not c.fullscreen then
+                -- and above
                 c.above = true
             end
         else
             c.above = false
-        end
-        
-        -- Floaters obey size hints
-        if awful.layout.get(c.screen) == awful.layout.suit.floating or c.class == 'Gvim' then
-            c.size_hints_honor = true
-        else
             c.size_hints_honor = false
         end
     end
-    end)
+  end)
 end
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)

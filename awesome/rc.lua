@@ -34,7 +34,7 @@ end
 
 -- DELICIOUS GLOBALS
 config_dir = awful.util.getdir("config")
-wallpaper = "/stash/jim/wallpapers/active/flowers.png"
+wallpaper = "/trove/art/hotd-flower.png"
 
 -- THEME
 beautiful.init(config_dir .. "/theme/theme.lua")
@@ -50,10 +50,11 @@ modkey = "Mod4"
 --naughty.config.theme.border_color = '#000000'
 --naughty.config.theme.border_width = '1'
 
+--gears.wallpaper.set(gears.color.create_solid_pattern('#171A1E'))
 -- Set wallpaper
--- (pretty image for display 1, a nice deep solid color for others (e.g. projector, second monitor)
-gears.wallpaper.set(gears.color.create_solid_pattern(gears.color.parse_color('#008888')))
-gears.wallpaper.maximized(wallpaper, 1, true)
+for s = 1, screen.count() do
+    gears.wallpaper.maximized(wallpaper, s)
+end
 
 -- Include everything!
 require("tags")
@@ -72,9 +73,9 @@ end
 --awful.util.spawn_with_shell("sleep 0.8 && imlibsetroot --composite -x 0 " .. wallpaper)
 
 -- Set pretty things
---awful.util.spawn("killall compton")
-awful.util.spawn("killall conky")
+awful.util.spawn("killall compton")
+--awful.util.spawn("killall conky")
 awful.util.spawn_with_shell("xfsettingsd")
 awful.util.spawn_with_shell("compton")
-awful.util.spawn_with_shell("sleep 1 && conky -c " .. config_dir .. "/conky/leftside")
+--awful.util.spawn_with_shell("sleep 1 && conky -c " .. config_dir .. "/conky/leftside")
 --awful.util.spawn_with_shell("sleep 3 && conky -c " .. config_dir .. "/conky/mpd")

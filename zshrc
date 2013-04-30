@@ -1,47 +1,41 @@
-# History
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-# emacs-style bindings
-bindkey -e
+# Path to your oh-my-zsh configuration.
+ZSH=/usr/share/oh-my-zsh/
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/jim/.zshrc'
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="minimal"
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set EDITOR and BROWSER
-export EDITOR="vim"
-export BROWSER="firefox"
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-# Add home bin to path
+# Comment this out to disable bi-weekly auto-update checks
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+
 path+=~/bin
-path+=~/.gem/ruby/2.0.0/bin
-path=($^path(N))
-
-# Rice up the prompt
-autoload colors; colors
-
-#export PS1="%{$fg[cyan]%}┌─[%{$fg[red]%}%n@%m %{$fg[magenta]%}%d%{$fg[cyan]%}]
-#%{$fg[gray]%}└─%{$reset_color%} "
-export PS1="%{$fg[cyan]%}[%{$fg[red]%}%n@%m %{$fg[magenta]%}%c%{$fg[cyan]%}]%{$reset_color%} "
-
-# Colorful ls
-alias ls='ls --color=auto'
-
-hack.exe() {
-    export PS1="[root@$* %~]# "
-}
-
-# Set title
-case $TERM in
-	*xterm*|*rxvt*)
-		precmd () { print -Pn "\e]0;%n@%M %~\a" }
-		preexec () { print -Pn "\e]0;%n@%M %~ ($1)\a" }
-	;;
-esac
-
-# Write a bunch of lines
-clear
