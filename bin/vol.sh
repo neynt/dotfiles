@@ -1,15 +1,13 @@
 #!/bin/bash
 
 case "$1" in
-	up)
+    up)
         amixer set Master '3%+'
-	;;
-	down)
+    ;;
+    down)
         amixer set Master '5%-'
-	;;
-	mute)
+    ;;
+    mute)
         amixer set Master toggle
     ;;
-    init)
-    exit
 esac
