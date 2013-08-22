@@ -13,9 +13,11 @@ These are the configuration files that make my setup work. It's rather badly org
 ## Currently used files
 
 * awesome/
+* bin/ - scripts
 * icons/ - application-specific system tray icons
 * vim/
-* FlatStudio-Mine/ - the sublime FlatStudioGray theme with a few lines changed (thinner scrollbars, less gradients).
+* FlatStudio-Mine/ - modified from FlatStudioGray (thinner scrollbars, less thickness, less gradients).
+* Acrylic-Icons/ - basically, I started with AnyColorYouLike, and am slowly replacing the icons with my own.
 
 ## Old files
 
