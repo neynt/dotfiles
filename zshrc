@@ -38,4 +38,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+export WINEARCH='win32'
+export WINEPREFIX='/home/neynt/.wine32'
 path+=~/bin
+path+=~/.gem/ruby/2.0.0/bin

@@ -1,13 +1,13 @@
-gtk-color-scheme = "base_color:#FAFAFA\nbg_color:#e3e4dE"
-gtk-color-scheme = "text_color:#303030\nfg_color:#424242"
+gtk-color-scheme = "base_color:#ffffff\nbg_color:#efefef"
+gtk-color-scheme = "text_color:#2c3333\nfg_color:#2c3333"
 gtk-color-scheme = "tooltip_bg_color:#161616\ntooltip_fg_color:#ffffff\nlink_color:#4a90f9"
-gtk-color-scheme = "theme_bg_dark_color:#424242\ntheme_fg_dark_color:#d8d8d8\ntheme_text_dark_color:#f0f0f0"
+gtk-color-scheme = "theme_bg_dark_color:#333333\ntheme_fg_dark_color:#aaaaaa\ntheme_text_dark_color:#f0f0f0"
 
 #  should be the same color that you have set in the file gtk.css #
 #  selection background color #####################################
-gtk-color-scheme = "selected_bg_color:#81d3d3"
+gtk-color-scheme = "selected_bg_color:#A8B8BD"
 #  selection text color
-gtk-color-scheme = "selected_fg_color:#242424"
+gtk-color-scheme = "selected_fg_color:#000000"
 ###################################################################
 
 gtk-auto-mnemonics	= 1
@@ -45,7 +45,7 @@ style "default" {
 	GtkMenu					::vertical-padding		= 0
 	GtkSeparatorMenuItem	::horizontal-padding	= 7
 
-	GtkNotebook				::tab-overlap			= 0		# Default = 2
+	GtkNotebook				::tab-overlap			= 1		# Default = 2
 	GtkNotebook				::tab-curvature			= 1		# Default = 1
 	
 	GtkPaned				::handle-size			= 6
@@ -59,16 +59,16 @@ style "default" {
 	GtkScale				::trough-side-details	= 1
 
 	GtkScrollbar    		::has-backward-stepper		= 0  
-	GtkScrollbar			::has-forward-stepper		= 1   # El maldito rollo de gtk2 y las scrollbars
+	GtkScrollbar			::has-forward-stepper		= 0   # El maldito rollo de gtk2 y las scrollbars
 	GtkScrollbar			::min-slider-length			= 30
-	GtkScrollbar			::slider-width				= 4
-	GtkScrollbar			::trough-border				= 1
+	GtkScrollbar			::slider-width				= 3
+	GtkScrollbar			::trough-border				= 0
 	GtkScrollbar			::activate-slider 			= FALSE
 	GtkScrollbar			::trough-side-details		= 0
-	GtkScrollbar			::stepper-size              = 1
+	GtkScrollbar			::stepper-size              = 0
 
 	GtkScrolledWindow		::scrollbar-spacing			= 0
-	GtkScrolledWindow		::scrollbars-within-bevel	= 1
+	GtkScrolledWindow		::scrollbars-within-bevel	= 0
 
 	GtkToolbar				::internal-padding			= 0
 	GtkToolbar				::window-dragging			= 1
@@ -116,10 +116,10 @@ style "default" {
 
 	engine "murrine" {
 		animation			= FALSE
-        arrowstyle			= 1			# Estilo flechas menu (triangulos)
+        arrowstyle			= 2			# Estilo flechas menu (triangulos)
 		border_shades       = {1.0, 1.0}
-		colorize_scrollbar	= TRUE
-		contrast			= 0.0
+		colorize_scrollbar	= FALSE
+		contrast			= 0.5
 		# default_button_color	= shade (1.30, @selected_bg_color)
 		comboboxstyle 		= 0			# 0 = normal combobox, 1 = colorized combobox button		
 		expanderstyle		= 0			# Treview expander (triangulo)
@@ -146,7 +146,7 @@ style "default" {
 		progressbarstyle	= 0
 		reliefstyle			= 0  # 0 = flat, 1 = inset, 2 = shadow, 3 = shadow with gradient, 4 = stronger shadow with gradient
 		rgba				= FALSE	# alpha transparency
-		roundness			= 1 # 0 = square
+		roundness			= 0 # 0 = square
 		scrollbarstyle		= 0 # 0 = nothing
 		separatorstyle 		= 1	# 0 = Hard seperators 1 = Smooth seperators
 		shadow_shades		= {1.0, 1.0}
@@ -194,19 +194,19 @@ style "wider" {
 }
 
 style "button" {
-    xthickness	= 3
-    ythickness	= 3
+    xthickness	= 1
+    ythickness	= 1
 
-    bg[NORMAL]                      = shade (0.91, @bg_color)
+    bg[NORMAL]                      = shade (1.00, @bg_color)
     bg[PRELIGHT]                    = shade (0.94, @bg_color)    
 	bg[ACTIVE]                      = shade (1.00, @selected_bg_color)	# Pulsado
   	bg[INSENSITIVE] 				= shade (0.94, @bg_color)
 
 	engine "murrine" {
-		contrast                = 0.0
+		contrast                = 1.0
 		gradient_shades         = {1.00,1.00,1.00,1.00}
 		focusstyle				= 2
-		lightborderstyle		= 1		
+		lightborderstyle		= 1
 		lightborder_shade       = 1.1
         highlight_shade			= 1.00
 		
@@ -215,7 +215,7 @@ style "button" {
 		#prelight_shade			= 0.9
 
 		textstyle               = 2
-		text_shade				= 0.7      
+		text_shade				= 0.7
 	}
 }
 
@@ -247,7 +247,7 @@ style "entry" { # text
 
 	engine "murrine" {
 		contrast			= 0.0
-		roundness			= 1		
+		roundness			= 0
 		border_shades		= {1.0, 1.0}
 		focusstyle  		= 2
 	}
@@ -276,16 +276,16 @@ class "GtkPaned"	style "handle"
 
 style "menubar" {
     # Modificado
-	xthickness	= 3
-	ythickness	= 3
+	xthickness	= 0
+	ythickness	= 0
 
-    fg[NORMAL]          = shade (0.97, @theme_fg_dark_color)
+    fg[NORMAL]          = shade (1.00, @fg_color)
 	#fg[PRELIGHT]	    = @selected_fg_color
 	#fg[ACTIVE]	        = @selected_fg_color
 	#fg[SELECTED]	    = @selected_fg_color
 
 
-    bg[NORMAL]          = @theme_bg_dark_color
+    bg[NORMAL]          = shade (1.00, @bg_color)
     
 	engine "murrine" {
 		gradient_shades     	= {1.00,1.00,1.00,1.00}		
@@ -301,18 +301,18 @@ style "menubar" {
 style "menu" {
 	xthickness	= 0
 	ythickness	= 0
-	GtkMenuItem::arrow-scaling	= 0.5
+	GtkMenuItem::arrow-scaling	= 1.0
 
-	bg[NORMAL]			= shade (1.05, @theme_bg_dark_color)
+	bg[NORMAL]			= shade (1.00, @theme_bg_dark_color)
 
 	engine "murrine" {
 		gradient_shades		= {1.0, 1.0, 1.0, 1.0}
-		roundness		    = 1 # 0 = squared 
+		roundness		    = 0 # 0 = squared 
 	}
 }
 
 style "menu_item_white" {
-	xthickness	= 2
+	xthickness	= 0
 	ythickness	= 3
 
 	fg[NORMAL] 			= shade (1.00, @theme_fg_dark_color)		# menu item normal
@@ -327,7 +327,7 @@ style "menu_item_white" {
 	engine "murrine" {
         gradient_shades		= {1.00, 1.00, 1.00, 1.00}
 		#border_shades 		= {1.15, 1.15}
-        roundness           = 1
+        roundness           = 0
         contrast            = 0.1           # Contraste separadores
 		textstyle           = 0
 		#text_shade			= 0.4
@@ -343,18 +343,18 @@ style "menu_item_black" {
     bg[SELECTED]      = shade (0.94, @selected_bg_color)
 
 	engine "murrine" {
-        gradient_shades		= {1.30, 1.15, 1.15, 1.00}
-        roundness           = 1
+        gradient_shades		= {1.00, 1.00, 1.00, 1.00}
+        roundness           = 0
         contrast            = 0.0
 	}
 }
 
 style "notebook" {
-    xthickness		= 3 
-    ythickness		= 3
+    xthickness		= 1
+    ythickness		= 1
    
-	bg[NORMAL]		= shade (0.97, @bg_color)		# selected tab entire
-	bg[ACTIVE]		= shade (0.88, @bg_color)		# unselected tab
+	bg[NORMAL]		= shade (1.00, @bg_color)		# selected tab entire
+	bg[ACTIVE]		= shade (0.90, @bg_color)		# unselected tab
 	bg[INSENSITIVE]	= shade (0.87, @bg_color)		# disabled controls
 
 	fg[NORMAL]          = @text_color				# text selected tab
@@ -363,15 +363,13 @@ style "notebook" {
 
 	engine "murrine" {
 		gradient_shades		= {1.00,1.00,1.00,1.00}
-		lightborderstyle		= 0		
+		lightborderstyle		= 0
 		lightborder_shade       = 1.0
-		contrast 			= 0.0
+		contrast 			= 1.0
         highlight_shade		= 1.00
-		roundness 			= 1
+		roundness 			= 0
 		prelight_shade		= 1.0
-
 		focusstyle = 2
- 
 	}
 }
 
@@ -384,7 +382,7 @@ style "progressbar" {
 	engine "murrine" {
 		gradient_shades		= {1.00, 1.00, 1.00, 1.00}
 		contrast 			= 0.0		
-		roundness			= 1
+		roundness			= 0
 	}
 }
 
@@ -415,7 +413,7 @@ style "scale" { # slider
 
 style "scrollbar" {
 	bg[SELECTED]		= shade (0.70, @base_color)			# color indicador
-	bg[NORMAL]			= shade (0.83, @bg_color)			# color borde indicador
+	bg[NORMAL]			= shade (0.30, @bg_color)			# color borde indicador
 
     # color flechas (stepper)	
     fg[NORMAL]          = shade (1.00, @base_color)
@@ -423,7 +421,7 @@ style "scrollbar" {
 	fg[ACTIVE]		    = shade (1.00, @base_color)
     fg[SELECTED]        = shade (1.00, @base_color)
     fg[INSENSITIVE]     = shade (1.00, @base_color)
-	
+
 	engine "murrine" {
         roundness               = 0
         gradient_shades			= {1.0,1.0,1.0,1.0}
@@ -432,10 +430,10 @@ style "scrollbar" {
         reliefstyle             = 0
         prelight_shade          = .75
         gradient_colors         = FALSE
-        lightborder_shade       = 1.0
+        lightborder_shade       = 0.0
         lightborderstyle        = 0
         trough_shades           = {1.00, 1.00}
-        border_shades           = {1.32, 1.32}
+        border_shades           = {1.0, 1.0}
         contrast                = 0.00
 	}
 }
@@ -481,7 +479,7 @@ style "spinbutton" = "button" { # input/stepper
 
 style "toolbar" {
     # Modificado
-	bg[NORMAL]			= shade (1.00, @theme_bg_dark_color)
+	bg[NORMAL]			= shade (1.00, @bg_color)
     #bg[ACTIVE]          = shade (1.40, mix (0.8, @selected_bg_color, @theme_bg_dark_color))
 	#bg[SELECTED]    	= shade (1.00, @theme_bg_dark_color)
 	#bg[INSENSITIVE]		= shade (0.92, @theme_bg_dark_color)
@@ -498,10 +496,10 @@ style "toolbar" {
 }
 
 style "toolbar_button" {
-    xthickness	= 2
-    ythickness	= 2	
+    xthickness	= 1
+    ythickness	= 1
 	
-    bg[PRELIGHT]                    = shade (0.80, @theme_bg_dark_color)
+    bg[PRELIGHT]                    = shade (1.00, @bg_color)
     bg[ACTIVE]                      = shade (0.70, @theme_bg_dark_color)
 	bg[SELECTED]    			    = shade (0.70, @theme_bg_dark_color)
 	bg[INSENSITIVE] 			    = shade (1.05, @theme_bg_dark_color)
@@ -513,12 +511,12 @@ style "toolbar_button" {
 
 	engine "murrine" {
 		gradient_shades     	= {1.00,1.00,1.00,1.00}
-		border_shades           = {1.00, 1.00}
+		border_shades           = {1.00,1.00}
 		contrast                = 0.80
 		lightborderstyle		= 0
 		# lightborder_shade		= 1.80
 		textstyle               = 1
-		roundness				= 2
+		roundness				= 0
 	}
 }
 
@@ -561,16 +559,16 @@ style "treeview" {
 
 	engine "murrine" {
 		gradient_shades		= {1.0, 1.0, 1.0, 1.0}        
-		separatorstyle 		= 0		       
+		separatorstyle 		= 0
 		contrast			= 1.0
 	}
 }
 
 style "treeview_header" = "button" {
-	ythickness	= 1
+	ythickness	= 0
     GtkWidget	::focus-padding	= 0
 
-	bg[NORMAL]					= shade (0.85, @base_color)
+	bg[NORMAL]					= shade (1.00, @bg_color)
 	bg[PRELIGHT]				= shade (0.88, @base_color)
 	bg[INSENSITIVE]				= shade (0.94, @bg_color)
 	bg[ACTIVE]					= shade (0.80, @base_color)
@@ -578,7 +576,7 @@ style "treeview_header" = "button" {
 	engine "murrine" {
 		border_shades           = {1.50, 1.50}      
 		gradient_shades         = {1.00,1.00,1.00,1.00}
-		contrast				= 0.30
+		contrast				= 0.50
         lightborderstyle		= 0
 		roundness				= 0
 		textstyle				= 1

@@ -25,4 +25,4 @@ for s = 1, screen.count() do
 	end
 end
 
-awful.layout.set(awful.layout.suit.fair, awful.tag.gettags(1)[1])
+--awful.layout.set(awful.layout.suit.fair, awful.tag.gettags(1)[1])

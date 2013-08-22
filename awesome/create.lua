@@ -16,21 +16,21 @@ mytasklist = {}
 
 -- Create for each screen
 for s = 1, screen.count() do
-    -- Main wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
-    mywibox[s].height = 16
-
-    -- Taglist
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
-
     if s == 1 then
+        -- Main wibox
+        mywibox[s] = awful.wibox({ position = "top", screen = s })
+        mywibox[s].height = 16
+
+        -- Taglist
+        mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(left_separator)
         left_layout:add(mytaglist[s])
         left_layout:add(separator)
 
         local center_layout = wibox.layout.fixed.horizontal()
-        mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, mytasklist.buttons)
+        mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
         center_layout:add(mytasklist[s])
 
         local right_layout = wibox.layout.fixed.horizontal()
@@ -48,7 +48,7 @@ for s = 1, screen.count() do
 
         mywibox[s]:set_widget(layout)
     else
-        -- subordinate screens
+        --[[ subordinate screens
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(separator)
         left_layout:add(mytaglist[s])
@@ -68,5 +68,6 @@ for s = 1, screen.count() do
         layout:set_right(right_layout)
 
         mywibox[s]:set_widget(layout)
+        ]]-- GET NOTHING!!
     end
 end

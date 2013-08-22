@@ -34,7 +34,8 @@ end
 
 -- DELICIOUS GLOBALS
 config_dir = awful.util.getdir("config")
-wallpaper = "/trove/art/hotd-flower.png"
+wallpaper = "/vault/art/ameyuki01.png"
+wallpaper_other = "/vault/art/plain.png"
 
 -- THEME
 beautiful.init(config_dir .. "/theme/theme.lua")
@@ -53,8 +54,9 @@ modkey = "Mod4"
 --gears.wallpaper.set(gears.color.create_solid_pattern('#171A1E'))
 -- Set wallpaper
 for s = 1, screen.count() do
-    gears.wallpaper.maximized(wallpaper, s)
+    gears.wallpaper.maximized(wallpaper_other, s)
 end
+gears.wallpaper.centered(wallpaper, 1)
 
 -- Include everything!
 require("tags")

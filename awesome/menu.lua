@@ -8,7 +8,7 @@ local myappsmenu = {
 local myutilsmenu = {
     { "reset", "xcalib -clear" },
     { "invert", "xcalib -invert -alter" },
-    { "darken", "xcalib -contrast 50 -alter" },
+    { "darken", "xcalib -contrast 80 -alter" },
     { "brighten", "xcalib -brightness 15 -alter" },
     { "ashen", function ()
         awful.util.spawn("xcalib -contrast 50 -alter")

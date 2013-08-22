@@ -76,20 +76,30 @@ globalkeys = awful.util.table.join(
 		awful.layout.arrange(mouse.screen)
     end),
 
+    -- Change gap
+    awful.key({ modkey }, "g", function ()
+        beautiful.orig_gap = 24 - beautiful.orig_gap
+        beautiful.cur_gap = beautiful.orig_gap
+    end),
+
     -- Make everything ultra minimal:
     awful.key({ modkey }, "Escape", function ()
         awful.util.spawn_with_shell("killall conky")
         awful.util.spawn_with_shell("xsetroot -solid black")
         awful.util.spawn_with_shell("killall compton")
+        beautiful.border_width = 0
+        beautiful.orig_gap = 0
+        beautiful.small_gap = 0
+        beautiful.cur_gap = 0
     end),
 
     -- dmenu prompt
     awful.key({ modkey,           }, "p",
-        function () awful.util.spawn("dmenu_run -fn 'smoothansi-7' " ..
+        function () awful.util.spawn("dmenu_run -fn 'Sazanami Gothic-8' " ..
                                       --"-b " ..
                                       --"-l 9 " ..
                                       "-i " ..
-                                      "-p 'run:' " ..
+                                      "-p 'wish?' " ..
                                       "-nb '" .. beautiful.dmenu_bg_normal .. "' " ..
                                       "-nf '" .. beautiful.dmenu_fg_normal .. "' " ..
                                       "-sb '" .. beautiful.dmenu_bg_focus .. "' " ..
@@ -98,20 +108,16 @@ globalkeys = awful.util.table.join(
     
     -- Applications
     awful.key({ modkey, "Shift"            }, "Return", function () awful.util.spawn(terminal) end ),
-    awful.key({ modkey, "Shift", "Control" }, "Return", function () awful.util.spawn("gnome-terminal") end ),
     awful.key({ modkey, "Shift"            }, "w",      function () awful.util.spawn(browser) end),
     awful.key({ modkey, "Shift", "Control" }, "w",      function () awful.util.spawn("chromium --incognito") end),
-    awful.key({ modkey, "Shift"            }, "g",      function () awful.util.spawn("gimp") end),
     awful.key({ modkey, "Shift"            }, "f",      function () awful.util.spawn("thunar") end),
     awful.key({ modkey, "Shift"            }, "a",      function () awful.util.spawn("arandr") end),
     awful.key({ modkey, "Shift"            }, "x",      function () awful.util.spawn("xkill") end),
     awful.key({ modkey,                    }, "s",      function () awful.util.spawn("scrotshot.sh") end),
     awful.key({ modkey, "Shift"            }, "i",      function () awful.util.spawn(terminal .. " -e wicd-curses") end),
-    awful.key({ modkey, "Shift"            }, "p",      function () awful.util.spawn(terminal .. " -e python") end),
     awful.key({ modkey, "Shift"            }, "n",      function () awful.util.spawn(terminal .. " -e ncmpcpp") end),
     awful.key({ modkey, "Shift"            }, "m",      function () awful.util.spawn(terminal .. " -e htop") end),
     awful.key({ modkey, "Shift"            }, "e",      function () awful.util.spawn("gvim") end),
-    awful.key({ modkey, "Shift", "Control" }, "e",      function () awful.util.spawn("subl -n") end),
     
     -- Utils
     awful.key({ }, "XF86PowerOff",          function () awful.util.spawn_with_shell("xset dpms force off") end),
@@ -126,18 +132,18 @@ globalkeys = awful.util.table.join(
 
     -- ibus
     awful.key({ modkey,          "Control" }, "e",      function () awful.util.spawn("ibus engine xkb:ca:eng:eng") end),
-    awful.key({ modkey,          "Control" }, "d",      function () awful.util.spawn("ibus engine xkb:us:dvorak:eng") end),
-    awful.key({ modkey,          "Control" }, "j",      function () awful.util.spawn("ibus engine mozc-jp") end),
-    awful.key({ modkey,          "Control" }, "k",      function () awful.util.spawn("ibus engine pinyin") end)
+    awful.key({ modkey,          "Control" }, "d",      function () awful.util.spawn("ibus engine xkb:us:dvorak:eng") end)
 )
 
 local fm = 48
 clientkeys = awful.util.table.join(
-    awful.key({ modkey },          "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift" }, "c",      function (c) c:kill()                         end),
-    awful.key({ modkey },          "space",  awful.client.floating.toggle                     ),
+    awful.key({ modkey },          "c",      function (c) awful.placement.centered(c)      end),
+    awful.key({ modkey },          "f",      awful.client.floating.toggle                     ),
+    awful.key({ modkey, "Shift" }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey },          "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey },          "o",      awful.client.movetoscreen                        ),
+    awful.key({ modkey },          "t",      function (c) c.ontop = not c.ontop            end),
     --awful.key({ modkey }, "n",
     --    function (c)
     --        c.border_width = beautiful.border_width - c.border_width
