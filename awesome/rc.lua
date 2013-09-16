@@ -34,8 +34,8 @@ end
 
 -- DELICIOUS GLOBALS
 config_dir = awful.util.getdir("config")
-wallpaper = "/vault/art/ameyuki01.png"
-wallpaper_other = "/vault/art/plain.png"
+wallpaper = "/vault/art/kyoko.png"
+wallpaper_other = wallpaper
 
 -- THEME
 beautiful.init(config_dir .. "/theme/theme.lua")

@@ -27,6 +27,22 @@ spacer:set_text("                                                               
 timeicon = wibox.widget.imagebox()
 timeicon:set_image(config_dir .. "/theme/statusicons/clock.png")
 
+-- Battery
+batwidget = wibox.widget.textbox()
+battimer = timer({ timeout = 1 })
+battimer:connect_signal("timeout", function()
+    local status = io.open("/sys/class/power_supply/BAT0/status"):read()
+    local perc = io.open("/sys/class/power_supply/BAT0/capacity"):read()
+    local symbols = {Discharging = "-", Charging = "+", Full = ""}
+    local symbol = symbols[status] or "="
+    if status == "Full" then
+        batwidget:set_text("")
+    else
+        batwidget:set_text(string.format("[%s%d%%]", symbol, perc))
+    end
+end)
+battimer:start()
+
 timewidget = wibox.widget.textbox()
 timewidget:buttons(awful.util.table.join(
     awful.button({ }, 1, function ()

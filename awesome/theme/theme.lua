@@ -2,18 +2,18 @@ local prefix = "/home/neynt/.config/awesome/theme"
 
 theme = {}
 
-theme.font          = "cure,Sazanami Gothic 8"
+theme.font          = "cure,Sazanami Gothic 7"
 --theme.font          = "IPAPGothic 7"
 --theme.font          = "cure 8"
 --theme.font            = "Droid Sans 7"
 
-theme.bg_normal     = "#eeeeeeee"
+theme.bg_normal     = "#333333"
 theme.bg_focus      = "#00000000"
 theme.bg_urgent     = "#ff3300"
 theme.bg_minimize   = "#888888"
 
 theme.fg_normal     = "#999999"
-theme.fg_focus      = "#000000"
+theme.fg_focus      = "#cccccc"
 theme.fg_urgent     = "#ffff00"
 theme.fg_minimize   = "#000000"
 
@@ -35,7 +35,7 @@ theme.cur_gap       = theme.orig_gap
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
---theme.taglist_bg_focus = "#C94053"
+theme.taglist_bg_focus = "#333333"
 --theme.taglist_fg_focus = "#ffffff"
 theme.tasklist_disable_icon = true
 theme.bg_systray = theme.bg_normal
@@ -43,10 +43,10 @@ theme.bg_systray = theme.bg_normal
 theme.tasklist_floating = "[float] "
 
 -- dmenu theme
-theme.dmenu_bg_normal = "#459F10"
-theme.dmenu_fg_normal = "#dddddd"
-theme.dmenu_bg_focus = "#333333"
-theme.dmenu_fg_focus = "#ffffff"
+theme.dmenu_bg_normal = theme.bg_normal
+theme.dmenu_fg_normal = theme.fg_normal
+theme.dmenu_bg_focus = theme.fg_focus
+theme.dmenu_fg_focus = theme.bg_normal
 
 -- Display the taglist bars
 theme.taglist_squares_sel   = prefix .. "/taglist/squarefw.png"

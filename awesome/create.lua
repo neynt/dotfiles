@@ -30,11 +30,13 @@ for s = 1, screen.count() do
         left_layout:add(separator)
 
         local center_layout = wibox.layout.fixed.horizontal()
-        mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+        mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused, mytasklist.buttons)
         center_layout:add(mytasklist[s])
 
         local right_layout = wibox.layout.fixed.horizontal()
         right_layout:add(mpdwidget)
+        right_layout:add(separator)
+        right_layout:add(batwidget)
         right_layout:add(separator)
         right_layout:add(wibox.widget.systray())
         right_layout:add(separator)

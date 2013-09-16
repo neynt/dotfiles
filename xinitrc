@@ -8,6 +8,7 @@ export QT_IM_MODULE=xim
 # fool java
 wmname LG3D
 
+#start-pulseaudio-x11 &
 xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr &
 setxkbmap -option compose:ralt &
