@@ -12,8 +12,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      
-                     --maximized_vertical = false,
-                     --maximized_horizontal = false
+                     maximized_vertical = false,
+                     maximized_horizontal = false
                      } },
     { rule = { name="recordMyDesktop" },
       properties = { floating = true } },

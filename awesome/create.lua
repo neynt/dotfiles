@@ -38,9 +38,9 @@ for s = 1, screen.count() do
         right_layout:add(separator)
         right_layout:add(batwidget)
         right_layout:add(separator)
-        right_layout:add(wibox.widget.systray())
-        right_layout:add(separator)
         right_layout:add(timewidget)
+        right_layout:add(separator)
+        right_layout:add(wibox.widget.systray())
         right_layout:add(right_separator)
 
         local layout = wibox.layout.align.horizontal()

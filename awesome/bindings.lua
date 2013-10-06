@@ -78,8 +78,7 @@ globalkeys = awful.util.table.join(
 
     -- Change gap
     awful.key({ modkey }, "g", function ()
-        beautiful.orig_gap = 24 - beautiful.orig_gap
-        beautiful.cur_gap = beautiful.orig_gap
+        beautiful.cur_gap = beautiful.orig_gap - beautiful.cur_gap
     end),
 
     -- Make everything ultra minimal:
@@ -108,6 +107,7 @@ globalkeys = awful.util.table.join(
     
     -- Applications
     awful.key({ modkey, "Shift"            }, "Return", function () awful.util.spawn(terminal) end ),
+    awful.key({ modkey, "Shift", "Control" }, "Return", function () awful.util.spawn("gnome-terminal") end ),
     awful.key({ modkey, "Shift"            }, "w",      function () awful.util.spawn(browser) end),
     awful.key({ modkey, "Shift", "Control" }, "w",      function () awful.util.spawn("chromium --incognito") end),
     awful.key({ modkey, "Shift"            }, "f",      function () awful.util.spawn("thunar") end),
@@ -216,7 +216,7 @@ end
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize)
+    awful.button({ modkey }, 3, function (c) awful.mouse.client.resize(c) end)
 )
 
 -- Set keys

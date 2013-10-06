@@ -1,9 +1,9 @@
 /* Default color scheme */
-@define-color bg_color #dedede;
-@define-color fg_color #555555;
-@define-color base_color #f9f9f9;
-@define-color text_color #333333;
-@define-color selected_bg_color #e36b9e;
+@define-color bg_color #333333;
+@define-color fg_color #aaaaaa;
+@define-color base_color #333333;
+@define-color text_color #aaaaaa;
+@define-color selected_bg_color #C94053;
 @define-color selected_fg_color #f9f9f9;
 @define-color tooltip_bg_color #2d2d2d;
 @define-color tooltip_fg_color #f9f9f9;

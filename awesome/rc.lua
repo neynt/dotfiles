@@ -34,8 +34,8 @@ end
 
 -- DELICIOUS GLOBALS
 config_dir = awful.util.getdir("config")
-wallpaper = "/vault/art/kyoko.png"
-wallpaper_other = wallpaper
+wallpaper = "/vault/art/toradora-exclam.png"
+wallpaper_other = "/vault/art/toradora-exclam.png"
 
 -- THEME
 beautiful.init(config_dir .. "/theme/theme.lua")
@@ -56,7 +56,7 @@ modkey = "Mod4"
 for s = 1, screen.count() do
     gears.wallpaper.maximized(wallpaper_other, s)
 end
-gears.wallpaper.centered(wallpaper, 1)
+gears.wallpaper.maximized(wallpaper, 1)
 
 -- Include everything!
 require("tags")

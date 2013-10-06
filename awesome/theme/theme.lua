@@ -2,12 +2,13 @@ local prefix = "/home/neynt/.config/awesome/theme"
 
 theme = {}
 
-theme.font          = "cure,Sazanami Gothic 7"
+--theme.font          = "cure,Sazanami Gothic 7"
+theme.font          = "Dosis SemiBold 8"
 --theme.font          = "IPAPGothic 7"
 --theme.font          = "cure 8"
 --theme.font            = "Droid Sans 7"
 
-theme.bg_normal     = "#333333"
+theme.bg_normal     = "#262626"
 theme.bg_focus      = "#00000000"
 theme.bg_urgent     = "#ff3300"
 theme.bg_minimize   = "#888888"
@@ -17,13 +18,13 @@ theme.fg_focus      = "#cccccc"
 theme.fg_urgent     = "#ffff00"
 theme.fg_minimize   = "#000000"
 
-theme.border_width  = 1
+theme.border_width  = 2
 theme.border_normal = theme.bg_normal
 theme.border_focus  = "#000000"
 theme.border_marked = "#91231c"
 
 -- window margins require a patch to /usr/share/awesome/lib/awful/layout/suit/tile.lua
-theme.orig_gap      = 8
+theme.orig_gap      = 6
 theme.small_gap     = 0
 theme.cur_gap       = theme.orig_gap
 
@@ -35,7 +36,7 @@ theme.cur_gap       = theme.orig_gap
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.taglist_bg_focus = "#333333"
+theme.taglist_bg_focus = "#33333300"
 --theme.taglist_fg_focus = "#ffffff"
 theme.tasklist_disable_icon = true
 theme.bg_systray = theme.bg_normal
