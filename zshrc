@@ -5,7 +5,7 @@ ZSH=/usr/share/oh-my-zsh/
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="minimal"
+ZSH_THEME="simple"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -41,4 +41,4 @@ source $ZSH/oh-my-zsh.sh
 export WINEARCH='win32'
 export WINEPREFIX='/home/neynt/.wine32'
 path+=~/bin
-path+=~/.gem/ruby/2.0.0/bin
+path+=~/.gem/ruby/2.1.0/bin

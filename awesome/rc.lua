@@ -34,8 +34,8 @@ end
 
 -- DELICIOUS GLOBALS
 config_dir = awful.util.getdir("config")
-wallpaper = "/vault/art/toradora-exclam.png"
-wallpaper_other = "/vault/art/toradora-exclam.png"
+wallpaper = "/vault/art/tarvasjogi.jpg"
+wallpaper_other = "/home/neynt/dotfiles/wallpaper-other.png"
 
 -- THEME
 beautiful.init(config_dir .. "/theme/theme.lua")
@@ -59,12 +59,12 @@ end
 gears.wallpaper.maximized(wallpaper, 1)
 
 -- Include everything!
-require("tags")
-require("menu")
-require("widgets")
-require("create")
-require("bindings")
-require("rules")
+dofile(config_dir .. "/tags.lua")
+dofile(config_dir .. "/menu.lua")
+dofile(config_dir .. "/widgets.lua")
+dofile(config_dir .. "/create.lua")
+dofile(config_dir .. "/bindings.lua")
+dofile(config_dir .. "/rules.lua")
 
 -- Set wallpaper
 if screen.count() > 1 then
@@ -77,6 +77,7 @@ end
 -- Set pretty things
 awful.util.spawn("killall compton")
 --awful.util.spawn("killall conky")
+awful.util.spawn_with_shell("ibus-daemon --replace --xim -d")
 awful.util.spawn_with_shell("xfsettingsd")
 awful.util.spawn_with_shell("compton")
 --awful.util.spawn_with_shell("sleep 1 && conky -c " .. config_dir .. "/conky/leftside")

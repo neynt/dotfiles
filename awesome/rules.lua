@@ -120,12 +120,12 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
 
     local num_tiled = 0
     for _, c in pairs(clients) do
-        if not awful.client.floating.get(c) then
+        --if not awful.client.floating.get(c) then
             num_tiled = num_tiled + 1
-        end
+        --end
     end
     if layout == "floating" then
-        num_tiled = 0
+        num_tiled = 2
     end
 
     for _, c in pairs(clients) do

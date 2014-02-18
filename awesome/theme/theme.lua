@@ -2,31 +2,31 @@ local prefix = "/home/neynt/.config/awesome/theme"
 
 theme = {}
 
---theme.font          = "cure,Sazanami Gothic 7"
-theme.font          = "Dosis SemiBold 8"
+theme.font          = "Sazanami Gothic,Tamsyn 8"
+--theme.font          = "cure,Tamsyn,Sazanami Gothic 8"
+--theme.font          = "xft:antialias=0,Tahoma 7"
+--theme.font          = "Dosis SemiBold 8"
 --theme.font          = "IPAPGothic 7"
 --theme.font          = "cure 8"
---theme.font            = "Droid Sans 7"
+--theme.font          = "Droid Sans 7"
 
-theme.bg_normal     = "#262626"
+theme.bg_normal     = "#000000"
 theme.bg_focus      = "#00000000"
 theme.bg_urgent     = "#ff3300"
 theme.bg_minimize   = "#888888"
 
 theme.fg_normal     = "#999999"
-theme.fg_focus      = "#cccccc"
+theme.fg_focus      = "#bfbfbf"
 theme.fg_urgent     = "#ffff00"
 theme.fg_minimize   = "#000000"
 
-theme.border_width  = 2
-theme.border_normal = theme.bg_normal
-theme.border_focus  = "#000000"
-theme.border_marked = "#91231c"
+theme.border_width  = 1
+theme.border_normal = "#19241D"
+theme.border_focus  = "#A16832"
+theme.border_marked = "#ff0000"
 
--- window margins require a patch to /usr/share/awesome/lib/awful/layout/suit/tile.lua
-theme.orig_gap      = 6
-theme.small_gap     = 0
-theme.cur_gap       = theme.orig_gap
+-- mix of border_focus and background
+theme.light_color = "#FFB17D"
 
 -- Others available:
 -- [taglist|tasklist]_[bg|fg]_[focus|urgent]
@@ -36,7 +36,7 @@ theme.cur_gap       = theme.orig_gap
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
-theme.taglist_bg_focus = "#33333300"
+theme.tasklist_fg_focus = "#999999"
 --theme.taglist_fg_focus = "#ffffff"
 theme.tasklist_disable_icon = true
 theme.bg_systray = theme.bg_normal
@@ -44,10 +44,10 @@ theme.bg_systray = theme.bg_normal
 theme.tasklist_floating = "[float] "
 
 -- dmenu theme
-theme.dmenu_bg_normal = theme.bg_normal
-theme.dmenu_fg_normal = theme.fg_normal
-theme.dmenu_bg_focus = theme.fg_focus
-theme.dmenu_fg_focus = theme.bg_normal
+theme.dmenu_bg_normal = "#2b9b00"
+theme.dmenu_fg_normal = "#000000"
+theme.dmenu_bg_focus = "#000000"
+theme.dmenu_fg_focus = "#92b7c9"
 
 -- Display the taglist bars
 theme.taglist_squares_sel   = prefix .. "/taglist/squarefw.png"

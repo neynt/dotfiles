@@ -3,29 +3,33 @@ export EDITOR="vim"
 export BROWSER="chromium"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=xim
+export QT_IM_MODULE=ibus
+#export LANG=ja_JP.UTF-8
+export DISPLAY=:0.0
 
 # fool java
 wmname LG3D
 
 #start-pulseaudio-x11 &
-xrdb ~/.Xresources
+#xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr &
 setxkbmap -option compose:ralt &
 #feh --bg-center /vault/art/kyoko.png &
 
 # background apps
-#sleep 2 && batterymon &
-sleep 3 && ibus-daemon -d &
-#sleep 60 && dropboxd &
+sleep 10 && batterymon &
+#sleep 60 && ibus-daemon --replace --xim -d &
+sleep 90 && dropboxd &
 thunar --daemon &
+breaks.sh &
+#pcmanfm -d &
 compton &
-sleep 4 && xfsettinsgd &
+nm-applet &
 mpd &
 mpdas &
 
 # startup apps
-xfce4-terminal -e wicd-curses &
+#xfce4-terminal -e wicd-curses &
 xfce4-terminal -e alsamixer &
 
 # dzen bar

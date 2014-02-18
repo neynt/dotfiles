@@ -1,7 +1,3 @@
---require("menu")
---require("wibox")
---require("widgets")
-
 mywibox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
@@ -15,17 +11,18 @@ mytaglist.buttons = awful.util.table.join(
 mytasklist = {}
 
 -- Create for each screen
-for s = 1, screen.count() do
+--for s = 1, screen.count() do
+for s = 1, 1 do
+    -- Main wibox
+    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s].height = 16
+    -- Taglist
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+
     if s == 1 then
-        -- Main wibox
-        mywibox[s] = awful.wibox({ position = "top", screen = s })
-        mywibox[s].height = 16
-
-        -- Taglist
-        mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
-
         local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(left_separator)
+        left_layout:add(vol_widget)
+        left_layout:add(separator)
         left_layout:add(mytaglist[s])
         left_layout:add(separator)
 
@@ -35,12 +32,12 @@ for s = 1, screen.count() do
 
         local right_layout = wibox.layout.fixed.horizontal()
         right_layout:add(mpdwidget)
-        right_layout:add(separator)
-        right_layout:add(batwidget)
-        right_layout:add(separator)
-        right_layout:add(timewidget)
+        --right_layout:add(separator)
+        --right_layout:add(batwidget)
         right_layout:add(separator)
         right_layout:add(wibox.widget.systray())
+        right_layout:add(separator)
+        right_layout:add(timewidget)
         right_layout:add(right_separator)
 
         local layout = wibox.layout.align.horizontal()
@@ -50,7 +47,7 @@ for s = 1, screen.count() do
 
         mywibox[s]:set_widget(layout)
     else
-        --[[ subordinate screens
+        -- subordinate screens
         local left_layout = wibox.layout.fixed.horizontal()
         left_layout:add(separator)
         left_layout:add(mytaglist[s])
@@ -70,6 +67,6 @@ for s = 1, screen.count() do
         layout:set_right(right_layout)
 
         mywibox[s]:set_widget(layout)
-        ]]-- GET NOTHING!!
+        --]] GET NOTHING!!
     end
 end

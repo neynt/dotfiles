@@ -1,4 +1,3 @@
-require("beautiful")
 
 -- {{{ Mouse bindings
 root.buttons(
@@ -94,11 +93,11 @@ globalkeys = awful.util.table.join(
 
     -- dmenu prompt
     awful.key({ modkey,           }, "p",
-        function () awful.util.spawn("dmenu_run -fn 'Sazanami Gothic-8' " ..
+        function () awful.util.spawn("dmenu_run -fn 'Terminus-9' " ..
                                       --"-b " ..
                                       --"-l 9 " ..
                                       "-i " ..
-                                      "-p 'wish?' " ..
+                                      "-p 'onegai?' " ..
                                       "-nb '" .. beautiful.dmenu_bg_normal .. "' " ..
                                       "-nf '" .. beautiful.dmenu_fg_normal .. "' " ..
                                       "-sb '" .. beautiful.dmenu_bg_focus .. "' " ..
@@ -108,26 +107,28 @@ globalkeys = awful.util.table.join(
     -- Applications
     awful.key({ modkey, "Shift"            }, "Return", function () awful.util.spawn(terminal) end ),
     awful.key({ modkey, "Shift", "Control" }, "Return", function () awful.util.spawn("gnome-terminal") end ),
-    awful.key({ modkey, "Shift"            }, "w",      function () awful.util.spawn(browser) end),
+    awful.key({ modkey, "Shift"            }, "w",      function () awful.util.spawn("chromium --disk-cache-size=1073741824") end),
     awful.key({ modkey, "Shift", "Control" }, "w",      function () awful.util.spawn("chromium --incognito") end),
     awful.key({ modkey, "Shift"            }, "f",      function () awful.util.spawn("thunar") end),
     awful.key({ modkey, "Shift"            }, "a",      function () awful.util.spawn("arandr") end),
     awful.key({ modkey, "Shift"            }, "x",      function () awful.util.spawn("xkill") end),
     awful.key({ modkey,                    }, "s",      function () awful.util.spawn("scrotshot.sh") end),
-    awful.key({ modkey, "Shift"            }, "i",      function () awful.util.spawn(terminal .. " -e wicd-curses") end),
+    awful.key({ modkey, "Shift"            }, "i",      function () awful.util.spawn(terminal .. " -e alsamixer") end),
     awful.key({ modkey, "Shift"            }, "n",      function () awful.util.spawn(terminal .. " -e ncmpcpp") end),
     awful.key({ modkey, "Shift"            }, "m",      function () awful.util.spawn(terminal .. " -e htop") end),
+    awful.key({ modkey, "Shift"            }, "t",      function () awful.util.spawn("gvim /home/neynt/TODO") end),
+    awful.key({ modkey, "Shift"            }, "p",      function () awful.util.spawn("gvim /home/neynt/PREMISES") end),
     awful.key({ modkey, "Shift"            }, "e",      function () awful.util.spawn("gvim") end),
     
     -- Utils
     awful.key({ }, "XF86PowerOff",          function () awful.util.spawn_with_shell("xset dpms force off") end),
     awful.key({ }, "XF86Suspend",           function () awful.util.spawn("systemctl hibernate") end),
-    awful.key({ }, "XF86MonBrightnessUp",   function () awful.util.spawn(config_dir .. "/brig.sh +") end),
-    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn(config_dir .. "/brig.sh -") end),
-    awful.key({ }, "XF86AudioMute",         function () awful.util.spawn(config_dir .. "/vol.sh mute") end),
-    awful.key({ }, "XF86AudioRaiseVolume",  function () awful.util.spawn(config_dir .. "/vol.sh up") end),
-    awful.key({ }, "XF86AudioLowerVolume",  function () awful.util.spawn(config_dir .. "/vol.sh down") end),
-    awful.key({ }, "Help",                  function () awful.util.spawn(config_dir .. "/lock.sh") end),
+    awful.key({ }, "XF86MonBrightnessUp",   function () awful.util.spawn("brig.sh +") end),
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("brig.sh -") end),
+    awful.key({ }, "XF86AudioMute",         function () awful.util.spawn("vol.sh mute") end),
+    awful.key({ }, "XF86AudioRaiseVolume",  function () awful.util.spawn("vol.sh up") end),
+    awful.key({ }, "XF86AudioLowerVolume",  function () awful.util.spawn("vol.sh down") end),
+    awful.key({ }, "Help",                  function () awful.util.spawn("lock.sh") end),
     awful.key({ }, "XF86HomePage",          function () awful.util.spawn("xcalib -clear") end),
 
     -- ibus
@@ -144,6 +145,10 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey },          "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey },          "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey },          "t",      function (c) c.ontop = not c.ontop            end),
+    awful.key({ modkey, "Control" }, "m",    function (c)
+        c.maximized_vertical = not c.maximized_vertical
+        c.maximized_horizontal = c.maximized_vertical
+    end),
     --awful.key({ modkey }, "n",
     --    function (c)
     --        c.border_width = beautiful.border_width - c.border_width

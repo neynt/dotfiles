@@ -2,10 +2,13 @@
 separator = wibox.widget.imagebox()
 separator:set_image(config_dir .. "/theme/separator.png")
 
--- Left separator adjusts volume when scrolled over
-left_separator = wibox.widget.imagebox()
-left_separator:set_image(config_dir .. "/theme/separator.png")
-left_separator:buttons(awful.util.table.join(
+-- Adjusts volume when scrolled over
+vol_widget = awful.widget.progressbar()
+vol_widget:set_width(2)
+vol_widget:set_vertical(true)
+vol_widget:set_color(theme.fg_focus)
+vol_widget:set_background_color(theme.bg_normal)
+vol_widget:buttons(awful.util.table.join(
     awful.button({ }, 1, function () awful.util.spawn("vol.sh mute") end),
     awful.button({ }, 4, function () awful.util.spawn("vol.sh up") end),
     awful.button({ }, 5, function () awful.util.spawn("vol.sh down") end)
@@ -15,9 +18,8 @@ left_separator:buttons(awful.util.table.join(
 right_separator = wibox.widget.imagebox()
 right_separator:set_image(config_dir .. "/theme/separator.png")
 right_separator:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () awful.tag.viewnone() end),
-    awful.button({ }, 4, function () awful.util.spawn("xbacklight -time 0 + 13") end),
-    awful.button({ }, 5, function () awful.util.spawn("xbacklight -time 0 - 1") end)
+    awful.button({ }, 4, function () awful.util.spawn("brig.sh +") end),
+    awful.button({ }, 5, function () awful.util.spawn("brig.sh -") end)
 ))
 
 -- Spacer: for fake centering
@@ -31,8 +33,16 @@ timeicon:set_image(config_dir .. "/theme/statusicons/clock.png")
 batwidget = wibox.widget.textbox()
 battimer = timer({ timeout = 1 })
 battimer:connect_signal("timeout", function()
-    local status = io.open("/sys/class/power_supply/BAT0/status"):read()
-    local perc = io.open("/sys/class/power_supply/BAT0/capacity"):read()
+    local status_f = io.open("/sys/class/power_supply/BAT0/status")
+    local status = '0'
+    if status_f then
+        local status = status_f:read()
+    end
+    local perc_f = io.open("/sys/class/power_supply/BAT0/capacity")
+    local perc = '0'
+    if perc_f then
+        local perc = perc_f:read()
+    end
     local symbols = {Discharging = "-", Charging = "+", Full = ""}
     local symbol = symbols[status] or "="
     if status == "Full" then

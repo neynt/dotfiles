@@ -9,10 +9,12 @@ tags = {}
 for s = 1, screen.count() do
 	if s == 1 then
 		--tags[s] = awful.tag({'一', '二', '三', '四', '五', '六', '七', '八', '九'}, s, layouts[1])
+		--tags[s] = awful.tag({'壱', '弐', '参', '四', '五', '六', '七', '八', '九'}, s, layouts[1])
 		--tags[s] = awful.tag({'一', '二', '三', '四'}, s, layouts[1])
 		--tags[s] = awful.tag({'!', '@', '#', '$'}, s, layouts[1])
 		--tags[s] = awful.tag({'ク', 'ラ', 'ナ', 'ド'}, s, layouts[1])
 		--tags[s] = awful.tag({'狼', '香', '辛', '料'}, s, layouts[1])
+		--tags[s] = awful.tag({'the', 'quality', 'of', 'mercy', 'is', 'not', 'strained', 'it', 'droppeth'}, s, layouts[1])
 		--tags[s] = awful.tag({'k', 'a', 'w', 'a', 'i', 'i'}, s, layouts[1])
 		tags[s] = awful.tag({'1', '2', '3', '4', '5', '6', '7', '8', '9'}, s, layouts[1])
 		--tags[s] = awful.tag({'1', '2', '3', '4', '5/miru', '6/book', '7/know', '8/hack', '9/lang'}, s, layouts[1])

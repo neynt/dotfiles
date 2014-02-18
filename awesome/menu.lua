@@ -56,4 +56,5 @@ mymainmenu = awful.menu({ items = {
     { "terminal", terminal },
     { "reload", awesome.restart },
     { "danger", dangermenu },
-}})
+},
+theme = { width = 100, height = 13}})
