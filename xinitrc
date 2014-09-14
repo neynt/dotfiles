@@ -1,6 +1,6 @@
 # settings
 export EDITOR="vim"
-export BROWSER="chromium"
+export BROWSER="firefox"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
@@ -10,7 +10,7 @@ export DISPLAY=:0.0
 # fool java
 wmname LG3D
 
-#start-pulseaudio-x11 &
+start-pulseaudio-x11 &
 #xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr &
 setxkbmap -option compose:ralt &
@@ -21,16 +21,16 @@ sleep 10 && batterymon &
 #sleep 60 && ibus-daemon --replace --xim -d &
 sleep 90 && dropboxd &
 thunar --daemon &
-breaks.sh &
+#breaks.sh &
 #pcmanfm -d &
 compton &
 nm-applet &
 mpd &
 mpdas &
+batterymon &
 
 # startup apps
-#xfce4-terminal -e wicd-curses &
-xfce4-terminal -e alsamixer &
+#xfce4-terminal -e alsamixer &
 
 # dzen bar
 #while true; do
@@ -39,6 +39,6 @@ xfce4-terminal -e alsamixer &
 #done | dzen2 &
 
 # unleash the kraken
-#/vault/code/sxhkd/sxhkd &
-#exec dbus-launch /vault/code/bspwm/bspwm
+#sxhkd &
+#exec dbus-launch bspwm
 exec dbus-launch awesome

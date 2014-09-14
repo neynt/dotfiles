@@ -56,6 +56,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift", "Control" }, "Escape", awesome.quit),
 
     -- Change layout
+    --awful.key({ modkey,                    }, "F1",    function () awful.layout.set(lain.layout.uselesstile) end),
+    --awful.key({ modkey,                    }, "F2",    function () awful.layout.set(lain.layout.termfair) end),
+
     awful.key({ modkey,                    }, "F1",    function () awful.layout.set(awful.layout.suit.tile) end),
     awful.key({ modkey, "Shift",           }, "F1",    function () awful.layout.set(awful.layout.suit.tile.left) end),
     awful.key({ modkey,          "Control" }, "F1",    function () awful.layout.set(awful.layout.suit.tile.bottom) end),
@@ -67,6 +70,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,                    }, "F4",    function () awful.layout.set(awful.layout.suit.spiral) end),
     awful.key({ modkey, "Shift",           }, "F4",    function () awful.layout.set(awful.layout.suit.spiral.dwindle) end),
     awful.key({ modkey,                    }, "F5",    function () awful.layout.set(awful.layout.suit.magnifier) end),
+
     awful.key({ modkey,                    }, "grave", function () awful.layout.set(awful.layout.suit.floating) end),
 
     --awful.key({ modkey, "Control"          }, "n", awful.client.restore),
@@ -92,12 +96,12 @@ globalkeys = awful.util.table.join(
     end),
 
     -- dmenu prompt
-    awful.key({ modkey,           }, "p",
+    awful.key({ modkey,           }, "r",
         function () awful.util.spawn("dmenu_run -fn 'Terminus-9' " ..
                                       --"-b " ..
                                       --"-l 9 " ..
                                       "-i " ..
-                                      "-p 'onegai?' " ..
+                                      "-p 'run:' " ..
                                       "-nb '" .. beautiful.dmenu_bg_normal .. "' " ..
                                       "-nf '" .. beautiful.dmenu_fg_normal .. "' " ..
                                       "-sb '" .. beautiful.dmenu_bg_focus .. "' " ..
@@ -107,7 +111,7 @@ globalkeys = awful.util.table.join(
     -- Applications
     awful.key({ modkey, "Shift"            }, "Return", function () awful.util.spawn(terminal) end ),
     awful.key({ modkey, "Shift", "Control" }, "Return", function () awful.util.spawn("gnome-terminal") end ),
-    awful.key({ modkey, "Shift"            }, "w",      function () awful.util.spawn("chromium --disk-cache-size=1073741824") end),
+    awful.key({ modkey, "Shift"            }, "w",      function () awful.util.spawn("firefox") end),
     awful.key({ modkey, "Shift", "Control" }, "w",      function () awful.util.spawn("chromium --incognito") end),
     awful.key({ modkey, "Shift"            }, "f",      function () awful.util.spawn("thunar") end),
     awful.key({ modkey, "Shift"            }, "a",      function () awful.util.spawn("arandr") end),

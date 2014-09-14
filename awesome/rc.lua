@@ -7,6 +7,7 @@ wibox = require("wibox")
 beautiful = require("beautiful")
 naughty = require("naughty")
 menubar = require("menubar")
+lain = require("lain")
 
 require("eminent")
 
@@ -34,7 +35,7 @@ end
 
 -- DELICIOUS GLOBALS
 config_dir = awful.util.getdir("config")
-wallpaper = "/vault/art/tarvasjogi.jpg"
+wallpaper = "/home/neynt/dotfiles/wallpaper.png"
 wallpaper_other = "/home/neynt/dotfiles/wallpaper-other.png"
 
 -- THEME

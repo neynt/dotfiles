@@ -47,14 +47,6 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-    c:connect_signal("mouse::enter", function(c)
-        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c)
-            and c.class ~= "Tegaki-recognize" then
-            client.focus = c
-        end
-    end)
-
     if not startup then
         -- Set the windows at the slave,
         -- i.e. put it at the end of others instead of setting it master.
@@ -68,46 +60,12 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
-    if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
-
-        -- The title goes in the middle
-        local title = awful.titlebar.widget.titlewidget(c)
-        title:buttons(awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
-                ))
-
-        -- Now bring it all together
-        local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
-        layout:set_middle(title)
-
-        awful.titlebar(c):set_widget(layout)
-    end
-
-    --if awful.titlebar(c) --[[and awful.layout.get(c.screen) ~= awful.layout.suit.floating]] then
-    --    awful.titlebar(c).visible = true
-    --end
+    c:connect_signal("mouse::enter", function(c)
+        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
+            and awful.client.focus.filter(c) then
+            client.focus = c
+        end
+    end)
 
     -- Arrange everything
     awful.layout.arrange(mouse.screen)
@@ -120,9 +78,9 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
 
     local num_tiled = 0
     for _, c in pairs(clients) do
-        --if not awful.client.floating.get(c) then
+        if not awful.client.floating.get(c) then
             num_tiled = num_tiled + 1
-        --end
+        end
     end
     if layout == "floating" then
         num_tiled = 2
@@ -131,10 +89,10 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
     for _, c in pairs(clients) do
         if num_tiled <= 1 or layout == "max" then
             c.border_width = 0
-            beautiful.cur_gap = beautiful.small_gap
+            beautiful.useless_gap_width = 0
         else
             c.border_width = beautiful.border_width
-            beautiful.cur_gap = beautiful.orig_gap
+            beautiful.useless_gap_width = beautiful.useless_gap_width_orig
         end
         if awful.client.floating.get(c) or layout == "floating" then
             -- Floaters are always on top

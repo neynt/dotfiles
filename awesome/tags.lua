@@ -1,5 +1,6 @@
 layouts =
 {
+    --lain.layout.uselesstile,
     awful.layout.suit.tile,
 }
 
@@ -17,6 +18,7 @@ for s = 1, screen.count() do
 		--tags[s] = awful.tag({'the', 'quality', 'of', 'mercy', 'is', 'not', 'strained', 'it', 'droppeth'}, s, layouts[1])
 		--tags[s] = awful.tag({'k', 'a', 'w', 'a', 'i', 'i'}, s, layouts[1])
 		tags[s] = awful.tag({'1', '2', '3', '4', '5', '6', '7', '8', '9'}, s, layouts[1])
+		--tags[s] = awful.tag({'1: Testing', '2: C++', '3: Java', '4: Python', '5', '6', '7', '8', '9: Docs'}, s, layouts[1])
 		--tags[s] = awful.tag({'1', '2', '3', '4', '5/miru', '6/book', '7/know', '8/hack', '9/lang'}, s, layouts[1])
 		--tags[s] = awful.tag({'一', '二', '三', '四', '五/miru', '六/book', '七/know', '八/hack', '九/lang'}, s, layouts[1])
         --tags[s] = awful.tag({'一', '二', '三', '四', heisig[math.random(1, #heisig-4)], heisig[math.random(1, #heisig-4)], heisig[math.random(1, #heisig-4)], heisig[math.random(1, #heisig-4)], heisig[math.random(1, #heisig-4)]}, s, layouts[1])
